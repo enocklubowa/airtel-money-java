@@ -11,6 +11,7 @@ public class Properties {
     public static String airtel_country;
     public static String airtel_currency;
     public static String airtel_base_url;
+    public static String airtel_grant_type;
 
     @Autowired
     public Properties(
@@ -18,12 +19,14 @@ public class Properties {
             @Value("${airtel_client_secret}") String airtel_client_secret,
             @Value("${airtel_country}") String airtel_country,
             @Value("${airtel_currency}") String airtel_currency,
-            @Value("${airtel_base_url}") String airtel_base_url
+            @Value("${airtel_base_url}") String airtel_base_url,
+            @Value("${airtel_grant_type}") String airtel_grant_type
     ){
         Properties.airtel_client_id = airtel_client_id;
         Properties.airtel_client_secret = airtel_client_secret;
         Properties.airtel_country = airtel_country;
         Properties.airtel_currency = airtel_currency;
         Properties.airtel_base_url = airtel_base_url;
+        Properties.airtel_grant_type = airtel_grant_type;
     }
 }
