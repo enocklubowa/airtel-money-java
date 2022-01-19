@@ -19,4 +19,22 @@ public class Transaction {
     //only for refunds
     private String airtel_money_id;
     private String message;
+
+    public String getStatus(){
+        try {
+            switch (this.status){
+                case "TS":
+                    return "Transaction Failed";
+                case "TA":
+                    return "Transaction Ambiguous";
+                case "TIP":
+                    return "Transaction in Progress";
+                default:
+                    return this.status;
+            }
+        }
+        catch (Exception exception){
+            return null;
+        }
+    }
 }

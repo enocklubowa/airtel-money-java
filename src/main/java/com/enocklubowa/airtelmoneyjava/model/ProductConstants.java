@@ -2,7 +2,7 @@ package com.enocklubowa.airtelmoneyjava.model;
 
 import java.util.List;
 
-public class AirtelInternalErrors {
+public class ProductConstants {
 
     public static List<String> getErrors(){
         return List.of(
@@ -17,7 +17,21 @@ public class AirtelInternalErrors {
                 "ESB000036",
                 "ESB000039",
                 "ESB000041",
-                "ESB000045");
+                "ESB000045",
+                "ROUTER001",
+                "ROUTER003",
+                "ROUTER005",
+                "ROUTER006",
+                "ROUTER007",
+                "ROUTER112",
+                "ROUTER114",
+                "ROUTER115",
+                "ROUTER116",
+                "ROUTER117");
+    }
+
+    public static List<String> getAvailableTransactionStatus(){
+        return List.of("TS", "TA", "TIP");
     }
 
 }

@@ -11,6 +11,7 @@ The complexities of the whole API are simplified into easily usable methods.
 - Spring WebFlux for API integration
 - JUnit for testing
 - [Lombok](https://projectlombok.org/) to avoid writing boilerplate code
+- Redis for cache
 
 ## Usage
 ### Collection 
@@ -75,9 +76,29 @@ The response has the same data as from initiating a collection exception the tra
 response.getData().getTransaction().getAirtel_money_id();
 ```
 
-Currently, you can be able to make a collection request.
-Still setting up things like transaction inquiry, disbursement, a batch of refactoring plus tests of course.
+### Transaction inquiry
 
-Since the library is still in early stages, I will update the readme as we go, and I will finally release it as a dependency when it's stable enough.
+Make a transaction inquiry with the following:
 
+```java
+CollectionResponse response;
+response = transactionInquiry.make("transaction_id");
+```
+
+Handle Exception:
+```java
+try{
+    response = transactionInquiry.make("transaction_id");
+}catch (CollectionException exception){
+    System.out.println(exception.getMessage());
+}
+```
+
+Get status of the transaction from the response:
+```java
+response.getData().getTransaction().getStatus();
+```
+
+More Products in the API will be added soon.
 For now, if you wish to use it, download it and compile it locally into a jar that you can import.
+Otherwise, a package is coming soon after setting up and passing tests.
