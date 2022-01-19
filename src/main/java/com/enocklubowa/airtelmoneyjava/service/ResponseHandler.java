@@ -3,10 +3,8 @@ package com.enocklubowa.airtelmoneyjava.service;
 import com.enocklubowa.airtelmoneyjava.exception.BadRequestException;
 import com.enocklubowa.airtelmoneyjava.exception.GenericException;
 import com.enocklubowa.airtelmoneyjava.model.AirtelErrorResponse;
-import com.enocklubowa.airtelmoneyjava.model.CollectionResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.reactive.function.client.ClientResponse;
-import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 import reactor.core.publisher.Mono;
 
 public class ResponseHandler {
@@ -52,7 +50,7 @@ public class ResponseHandler {
         return Mono.just(response);
     }
 
-    private Mono<ClientResponse> throwExceptionWithMessage(ClientResponse response, String message){
+    private static Mono<ClientResponse> throwExceptionWithMessage(ClientResponse response, String message){
         return response.bodyToMono(String.class)
                 .flatMap(body -> Mono.error(new GenericException(message)));
     }

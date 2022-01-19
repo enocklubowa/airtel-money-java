@@ -5,10 +5,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 import org.springframework.web.reactive.function.client.WebClient;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class AirtelWebClient {
     private final static String CURRENCY_KEY = "X-Currency";
     private final static String COUNTRY_KEY = "X-Country";
@@ -18,12 +19,15 @@ public class AirtelWebClient {
     private final AuthService authService;
 
     public WebClient build(){
+        ExchangeFilterFunction errorResponseFilter = ExchangeFilterFunction
+                .ofResponseProcessor(ResponseHandler::responseProcessor);
+
         return webClientBuilder.defaultHeaders(httpHeaders -> {
             httpHeaders.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
             httpHeaders.set(HttpHeaders.ACCEPT, MediaType.ALL_VALUE);
             httpHeaders.set(HttpHeaders.AUTHORIZATION, authService.getAccessToken().getAccess_token());
             httpHeaders.set(COUNTRY_KEY, Properties.airtel_country);
             httpHeaders.set(CURRENCY_KEY, Properties.airtel_currency);
-        }).baseUrl(Properties.airtel_base_url).build();
+        }).baseUrl(Properties.airtel_base_url).filter(errorResponseFilter).build();
     }
 }

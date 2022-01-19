@@ -35,7 +35,7 @@ public class AuthService {
                 .filter(errorResponseFilter)
                 .build()
                 .post()
-                .uri("//auth/oauth2/token")
+                .uri("/auth/oauth2/token")
                 .body(Mono.just(requestBody), AccessTokenRequest.class)
                 .retrieve()
                 .bodyToMono(AccessTokenResponse.class)

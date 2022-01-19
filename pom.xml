@@ -43,16 +43,9 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webflux -->
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webflux</artifactId>
-			<version>5.3.15</version>
-		</dependency>
-		<dependency>
-			<groupId>com.enocklubowa</groupId>
-			<artifactId>spring-common-exceptions</artifactId>
-			<version>0.1.0</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
 		</dependency>
 	</dependencies>
 

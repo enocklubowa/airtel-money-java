@@ -7,14 +7,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class AuthServiceTest {
+public class CollectionServiceTest {
 
     @Autowired
-    private AuthService authService;
+    private CollectionService collectionService;
 
     @Test
-    public void shouldReturnAccessToken(){
-        System.out.println(authService.getAccessToken());
+    public void shouldInitiateCollectionSuccessfully(){
+        collectionService.makeCollection("testing transaction", "753503195", 500L, "hdhsja");
 
         assertEquals(1, 1);
     }
