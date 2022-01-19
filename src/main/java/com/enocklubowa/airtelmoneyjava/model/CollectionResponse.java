@@ -7,5 +7,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CollectionResponse {
     private AirtelResponseData data;
-    private AirtelResponseStatus status;
+    private CollectionStatus status;
 }

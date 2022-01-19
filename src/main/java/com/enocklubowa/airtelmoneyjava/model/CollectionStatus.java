@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
  * Status object returned from Airtel about a given transaction/operation
  */
 @Data
-public class AirtelResponseStatus {
+public class CollectionStatus {
     private String response_code;
     private String code;
     private boolean success;

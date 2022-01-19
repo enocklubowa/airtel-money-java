@@ -35,6 +35,23 @@ try{
 }
 ```
 
+The `response` has:
+```java
+// transaction details
+Transaction transaction = response.getData().getTransaction(); 
+// transaction status details
+CollectionStatus status = response.getStatus();
+
+// store the transaction details as well as the status details        
+transaction.getId();
+transaction.getStatus();
+        
+status.getResponse_code();
+status.getCode();
+status.isSuccess();
+status.getMessage();
+```
+
 Currently, you can be able to make a collection request.
 Still setting up things like transaction inquiry, refunds, disbursement, a batch of refactoring plus tests of course.
 
