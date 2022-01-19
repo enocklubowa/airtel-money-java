@@ -4,6 +4,7 @@ import com.enocklubowa.airtelmoneyjava.configuration.Properties;
 import com.enocklubowa.airtelmoneyjava.model.AccessTokenRequest;
 import com.enocklubowa.airtelmoneyjava.model.AccessTokenResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,6 +19,7 @@ public class AuthService {
 
     private final WebClient.Builder webClientBuilder;
 
+    @Cacheable(value = "airtelAuthCache")
     public AccessTokenResponse getAccessToken(){
         AccessTokenRequest requestBody =
                 new AccessTokenRequest(
