@@ -4,7 +4,7 @@ import java.util.List;
 
 public class AirtelInternalErrors {
 
-    public List<String> getErrors(){
+    public static List<String> getErrors(){
         return List.of(
                 "ESB000001",
                 "ESB000004",

@@ -12,7 +12,32 @@ The complexities of the whole API are simplified into easily usable methods.
 - JUnit for testing
 - [Lombok](https://projectlombok.org/) to avoid writing boilerplate code
 
-Currently you can be able to request Access tokens from the Airtel API and make a collection request with the obtained access token.
+### Usage
+
+Initiate a collection request to the user's phone number with the following:
+
+```java
+@Autowired
+Collection collection;
+
+CollectionResponse response;
+
+response = collection.initiate("Testing transaction", "75*******", 1000, "YOUR_INTERNAL_GENERATED_TRANSACTION_ID");
+```
+
+Handle Exceptions:
+```java
+try{
+    response = collection.initiate("Testing transaction", "75*******", 1000, "YOUR_INTERNAL_GENERATED_TRANSACTION_ID");
+} catch(CollationException exception){
+    //Print or log the error
+    System.out.println(exception.getMessage());
+}
+```
+
+Currently, you can be able to make a collection request.
 Still setting up things like transaction inquiry, refunds, disbursement, a batch of refactoring plus tests of course.
 
-**Since the library is still in development, I will update the readme as we go and I will finally release it as a dependency**
+Since the library is still in early stages, I will update the readme as we go, and I will finally release it as a dependency when it's stable enough.
+
+For now, if you wish to use it, download it and compile it locally into a jar that you can import.
