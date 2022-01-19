@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class CollectionServiceTest {
+public class CollectionTest {
 
     @Autowired
     private Collection collection;

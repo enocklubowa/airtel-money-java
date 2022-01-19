@@ -16,6 +16,7 @@ public class Transaction {
     private String currency = Properties.airtel_currency;
     private String id;
     private String status;
+    //only for refunds
     private String airtel_money_id;
     private String message;
 }

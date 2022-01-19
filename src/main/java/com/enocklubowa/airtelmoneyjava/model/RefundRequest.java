@@ -1,5 +1,6 @@
 package com.enocklubowa.airtelmoneyjava.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -7,7 +8,7 @@ import lombok.NoArgsConstructor;
  * Object sent when requesting a refund
  */
 @Data
-@NoArgsConstructor
+@AllArgsConstructor
 public class RefundRequest {
     private Transaction transaction;
 }

@@ -15,6 +15,8 @@ public class Collection {
 
     private final AirtelWebClient webClient;
 
+    private final AirtelErrorsHandler airtelErrorsHandler;
+
     public CollectionResponse initiate(
             @Size(min = 2, max = 10, message = "reference should have at least 4 and a maximum of 64 characters") String reference,
             @Size(min = 9, max = 9, message = "msisdn should contain 9 characters") String msisdn,
@@ -37,18 +39,9 @@ public class Collection {
                 .bodyToMono(CollectionResponse.class)
                 .block();
 
-        checkForAirtelInternalErrors(response);
-
-
+        airtelErrorsHandler.checkForAirtelInternalErrors(response);
 
         return response;
     }
 
-    private void checkForAirtelInternalErrors(CollectionResponse response) {
-        for(String errorCode : AirtelInternalErrors.getErrors()){
-            if(errorCode.equals(response.getStatus().getResult_code())){
-                throw new CollectionException(response.getStatus().getResult_code()+": "+response.getStatus().getMessage());
-            }
-        }
-    }
 }

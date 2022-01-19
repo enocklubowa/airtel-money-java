@@ -12,8 +12,8 @@ The complexities of the whole API are simplified into easily usable methods.
 - JUnit for testing
 - [Lombok](https://projectlombok.org/) to avoid writing boilerplate code
 
-### Usage
-
+## Usage
+### Collection 
 Initiate a collection request to the user's phone number with the following:
 
 ```java
@@ -25,7 +25,7 @@ CollectionResponse response;
 response = collection.initiate("Testing transaction", "75*******", 1000, "YOUR_INTERNAL_GENERATED_TRANSACTION_ID");
 ```
 
-Handle Exceptions:
+Handle Exception:
 ```java
 try{
     response = collection.initiate("Testing transaction", "75*******", 1000, "YOUR_INTERNAL_GENERATED_TRANSACTION_ID");
@@ -52,8 +52,31 @@ status.isSuccess();
 status.getMessage();
 ```
 
+### Refund
+Perform a refund with the following:
+
+```java
+CollectionResponse response;
+response = refund.make("transaction_id");
+```
+
+Handle Exception:
+```java
+try{
+    response = refund.make("transaction_id");
+}catch(CollectionException exception){
+    System.out.println(exception.getMessage())
+}
+```
+
+The response has the same data as from initiating a collection exception the transaction id which is returned as:
+
+```java
+response.getData().getTransaction().getAirtel_money_id();
+```
+
 Currently, you can be able to make a collection request.
-Still setting up things like transaction inquiry, refunds, disbursement, a batch of refactoring plus tests of course.
+Still setting up things like transaction inquiry, disbursement, a batch of refactoring plus tests of course.
 
 Since the library is still in early stages, I will update the readme as we go, and I will finally release it as a dependency when it's stable enough.
 
