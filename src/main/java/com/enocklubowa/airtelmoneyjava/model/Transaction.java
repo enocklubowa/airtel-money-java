@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Transaction {
-    private Long amount;
+    private double amount;
     private String country = Properties.airtel_country;
     private String currency = Properties.airtel_currency;
     private String id;
@@ -19,6 +19,7 @@ public class Transaction {
     //only for refunds
     private String airtel_money_id;
     private String message;
+    private String reference_id;
 
     public String getStatus(){
         try {

@@ -1,18 +1,18 @@
 package com.enocklubowa.airtelmoneyjava.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 /**
  * Object sent when making a collection request
  */
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
-public class CollectionRequest {
-    // Reason for the transaction e.g Testing transaction
-    private String reference;
+public class CollectionRequest extends TransferRequest {
     private Subscriber subscriber;
-    private Transaction transaction;
+
+    public CollectionRequest(String reference, Subscriber subscriber, Transaction transaction){
+        super(reference, transaction);
+        this.subscriber = subscriber;
+    }
 }

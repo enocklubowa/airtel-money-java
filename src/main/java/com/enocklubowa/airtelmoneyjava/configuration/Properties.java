@@ -13,6 +13,7 @@ public class Properties {
     public static String airtel_base_url;
     public static String airtel_grant_type;
     public static long airtel_token_expires_in;
+    public static String airtel_public_key;
 
     @Autowired
     public Properties(
@@ -22,7 +23,8 @@ public class Properties {
             @Value("${airtel_currency}") String airtel_currency,
             @Value("${airtel_base_url}") String airtel_base_url,
             @Value("${airtel_grant_type}") String airtel_grant_type,
-            @Value("${airtel_token_expires_in}") long airtel_token_expires_in
+            @Value("${airtel_token_expires_in}") long airtel_token_expires_in,
+            @Value("${airtel_public_key}") String airtel_public_key
     ){
         Properties.airtel_client_id = airtel_client_id;
         Properties.airtel_client_secret = airtel_client_secret;
@@ -31,5 +33,6 @@ public class Properties {
         Properties.airtel_base_url = airtel_base_url;
         Properties.airtel_grant_type = airtel_grant_type;
         Properties.airtel_token_expires_in = airtel_token_expires_in;
+        Properties.airtel_public_key = airtel_public_key;
     }
 }

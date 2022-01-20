@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class CollectionResponse {
-    private AirtelResponseData data;
-    private CollectionStatus status;
+public class AirtelResponse {
+    private ResponseData data;
+    private ResponseStatus status;
 }

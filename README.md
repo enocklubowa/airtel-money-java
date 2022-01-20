@@ -19,6 +19,11 @@ The complexities of the whole API are simplified into easily usable methods.
 Add required dependencies
 ```xml
 <dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.22</version>
+</dependency>
+<dependency>
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-starter-data-redis</artifactId>
 </dependency>

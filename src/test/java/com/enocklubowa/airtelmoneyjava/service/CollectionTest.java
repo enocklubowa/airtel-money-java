@@ -1,6 +1,7 @@
 package com.enocklubowa.airtelmoneyjava.service;
 
 import com.enocklubowa.airtelmoneyjava.exception.CollectionException;
+import com.enocklubowa.airtelmoneyjava.service.product.Collection;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
