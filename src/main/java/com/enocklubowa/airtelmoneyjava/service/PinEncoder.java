@@ -15,20 +15,19 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
-@Service
 public class PinEncoder {
 
     protected static String DEFAULT_ENCRYPTION_ALGORITHM = "RSA";
     protected static String DEFAULT_TRANSFORMATION = "RSA/ECB/PKCS1Padding";
 
-    public String encode(String pin) throws IllegalBlockSizeException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, InvalidKeyException {
-        String encryptData = encrypt("TEST", Properties.airtel_public_key);
+    public static String encode(String pin) throws IllegalBlockSizeException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, InvalidKeyException {
+        String encryptData = encrypt(pin, Properties.airtel_public_key);
         System.out.println("Encrypted String-" + encryptData);
         return pin;
     }
 
 
-    public static String encrypt(String data, String publicKey) throws BadPaddingException, IllegalBlockSizeException,
+    private static String encrypt(String data, String publicKey) throws BadPaddingException, IllegalBlockSizeException,
             InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException {
         Cipher cipher = Cipher.getInstance(DEFAULT_TRANSFORMATION);
         cipher.init(Cipher.ENCRYPT_MODE, getPublicKey(publicKey));

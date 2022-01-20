@@ -19,10 +19,6 @@ public class DisbursementImpl implements Disbursement {
 
     private final AirtelWebClient webClient;
 
-    private final ErrorCodeHandler errorCodeHandler;
-
-    private final PinEncoder pinEncoder;
-
     @Override
     public AirtelResponse initiate(
             @Size(min = 2, max = 10, message = "reference should have at least 4 and a maximum of 64 characters") String reference,
@@ -38,7 +34,7 @@ public class DisbursementImpl implements Disbursement {
         Payee payee = new Payee(msisdn);
 
 
-        DisbursementRequest request = new DisbursementRequest(payee, pinEncoder.encode(pin),
+        DisbursementRequest request = new DisbursementRequest(payee, PinEncoder.encode(pin),
                 reference, transaction);
 
         AirtelResponse response = webClient.build()
@@ -49,7 +45,7 @@ public class DisbursementImpl implements Disbursement {
                 .bodyToMono(AirtelResponse.class)
                 .block();
 
-        errorCodeHandler.checkForErrorResultCodes(response);
+        ErrorCodeHandler.checkForErrorResultCodes(response);
 
         return response;
     }
@@ -64,7 +60,7 @@ public class DisbursementImpl implements Disbursement {
                 .bodyToMono(AirtelResponse.class)
                 .block();
 
-        errorCodeHandler.checkForErrorResultCodes(response);
+        ErrorCodeHandler.checkForErrorResultCodes(response);
 
         return response;
     }

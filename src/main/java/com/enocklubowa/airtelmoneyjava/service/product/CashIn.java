@@ -1,4 +1,4 @@
-package com.enocklubowa.airtelmoneyjava.service;
+package com.enocklubowa.airtelmoneyjava.service.product;
 
 import com.enocklubowa.airtelmoneyjava.model.AirtelResponse;
 

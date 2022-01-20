@@ -1,7 +1,7 @@
 package com.enocklubowa.airtelmoneyjava.service;
 
 import com.enocklubowa.airtelmoneyjava.model.*;
-import com.enocklubowa.airtelmoneyjava.service.product.CashIn;
+import com.enocklubowa.airtelmoneyjava.service.product.CashOut;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
@@ -16,12 +16,12 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CashInImpl implements CashIn {
+public class CashOutImpl implements CashOut {
 
     private final AirtelWebClient webClient;
 
     @Override
-    public AirtelResponse initiate(String msisdn, double amount, HashMap<String, String> additional_info, String reference, String pin, String id) throws IllegalBlockSizeException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, InvalidKeyException {
+    public AirtelResponse initiate(String msisdn, double amount, HashMap<String, String> additional_info, String reference, String id) throws IllegalBlockSizeException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, InvalidKeyException {
 
         List<AdditionalInfoItem> additionalInfoItems = AdditionalInfoParser.parseAdditionalInfo(additional_info);
 
@@ -32,8 +32,7 @@ public class CashInImpl implements CashIn {
         transaction.setAmount(amount);
         transaction.setId(id);
 
-        TransferRequest request = new CashInRequest(
-                PinEncoder.encode(pin),
+        TransferRequest request = new CashOutRequest(
                 additionalInfoItems,
                 subscriber,
                 reference,
@@ -41,7 +40,7 @@ public class CashInImpl implements CashIn {
 
         AirtelResponse response = webClient.build()
                 .post()
-                .uri("/standard/v1/cashin/")
+                .uri("/standard/v1/cashout/")
                 .body(Mono.just(request), TransferRequest.class)
                 .retrieve()
                 .bodyToMono(AirtelResponse.class)
@@ -65,7 +64,5 @@ public class CashInImpl implements CashIn {
 
         return response;
     }
-
-
 
 }

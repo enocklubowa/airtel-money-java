@@ -14,8 +14,6 @@ public class CollectionImpl implements Collection {
 
     private final AirtelWebClient webClient;
 
-    private final ErrorCodeHandler errorCodeHandler;
-
     @Override
     public AirtelResponse initiate(
             @Size(min = 2, max = 10, message = "reference should have at least 4 and a maximum of 64 characters") String reference,
@@ -39,7 +37,7 @@ public class CollectionImpl implements Collection {
                 .bodyToMono(AirtelResponse.class)
                 .block();
 
-        errorCodeHandler.checkForErrorResultCodes(response);
+        ErrorCodeHandler.checkForErrorResultCodes(response);
         return response;
     }
 
@@ -58,7 +56,7 @@ public class CollectionImpl implements Collection {
                 .bodyToMono(AirtelResponse.class)
                 .block();
 
-        errorCodeHandler.checkForErrorResultCodes(response);
+        ErrorCodeHandler.checkForErrorResultCodes(response);
 
         return response;
     }
@@ -73,7 +71,7 @@ public class CollectionImpl implements Collection {
                 .bodyToMono(AirtelResponse.class)
                 .block();
 
-        errorCodeHandler.checkForErrorResultCodes(response);
+        ErrorCodeHandler.checkForErrorResultCodes(response);
 
         return response;
     }

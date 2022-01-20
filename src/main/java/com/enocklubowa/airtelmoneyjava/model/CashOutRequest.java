@@ -1,6 +1,5 @@
 package com.enocklubowa.airtelmoneyjava.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,15 +7,12 @@ import java.util.List;
 
 @Getter
 @Setter
-public class CashInRequest extends CollectionRequest{
-    private String pin;
+public class CashOutRequest extends CollectionRequest{
     private List<AdditionalInfoItem> additional_info;
 
-    public CashInRequest(String pin, List<AdditionalInfoItem> additional_info, Subscriber subscriber, String reference, Transaction transaction){
+    public CashOutRequest(List<AdditionalInfoItem> additional_info, Subscriber subscriber, String reference, Transaction transaction){
         super(subscriber, reference, transaction);
-        this.pin = pin;
         this.additional_info = additional_info;
     }
-
 
 }
