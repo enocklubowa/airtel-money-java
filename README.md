@@ -63,7 +63,7 @@ airtel_token_expires_in=160     #Leave with default
 
 ## Products
 ### Collection 
-Initiate a collection request to the user's phone number with the following:
+Initiate a collection request with the following:
 
 ```java
 @Autowired
@@ -101,12 +101,11 @@ status.isSuccess();
 status.getMessage();
 ```
 
-### Refund
 Perform a refund with the following:
 
 ```java
 CollectionResponse response;
-response = refund.make("transaction_id");
+response = collection.refund("transaction_id");
 ```
 
 Handle Exception:
@@ -124,13 +123,11 @@ The response has the same data as from initiating a collection except the transa
 response.getData().getTransaction().getAirtel_money_id();
 ```
 
-### Transaction inquiry
-
-Make a transaction inquiry with the following:
+Check status of a transaction:
 
 ```java
 CollectionResponse response;
-response = transactionInquiry.make("transaction_id");
+response = collection.checkStatus("transaction_id");
 ```
 
 Handle Exception:
