@@ -1,19 +1,45 @@
 # Airtel Money Integration for Java
 
 ## Introduction
-This is a java library to ease integration of the Airtel Money API into Java applications. 
+This is a java library for spring applications to ease integration of the Airtel Money API into Java applications. 
 The complexities of the whole API are simplified into easily usable methods.
 
 **Note:** The library is still in developemnt so I can't guarantee stability.
 
-### Technologies used sofar
+### Technologies used
 
 - Spring WebFlux for API integration
-- JUnit for testing
+- [JUnit](https://junit.org/junit5/) for testing
 - [Lombok](https://projectlombok.org/) to avoid writing boilerplate code
-- Redis for cache
+- [Redis](https://redis.io/) for cache
 
 ## Usage
+First of all, scan for components in the package from your main class
+
+```java
+@SpringBootApplication(scanBasePackages = {"com.enocklubowa.airtelmoneyjava", ...your other packages})
+public class DemoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(DemoApplication.class, args);
+	}
+
+}
+```
+
+Specify these in your application.properties file
+
+```properties
+airtel_client_id=
+airtel_client_secret=
+airtel_country=UG   #If different from Uganda, then change it to your country
+airtel_currency=UGX     #If different from UGX, then change it
+airtel_base_url=https://openapiuat.airtel.africa
+airtel_grant_type=client_credentials    #Leave with default
+airtel_token_expires_in=160     #Leave with default
+```
+`airtel_base_url` is `https://openapiuat.airtel.africa` in sandbox and `https://openapi.airtel.africa` in production 
+
 ### Collection 
 Initiate a collection request to the user's phone number with the following:
 
