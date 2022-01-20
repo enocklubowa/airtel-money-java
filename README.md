@@ -14,7 +14,20 @@ The complexities of the whole API are simplified into easily usable methods.
 - [Redis](https://redis.io/) for cache
 
 ## Usage
-First of all, scan for components in the package from your main class
+### Initial setup
+
+Add required dependencies
+```xml
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-data-redis</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-validation</artifactId>
+</dependency>
+```
+Scan for components in the package from your main class
 
 ```java
 @SpringBootApplication(scanBasePackages = {"com.enocklubowa.airtelmoneyjava", ...your other packages})
@@ -40,6 +53,7 @@ airtel_token_expires_in=160     #Leave with default
 ```
 `airtel_base_url` is `https://openapiuat.airtel.africa` in sandbox and `https://openapi.airtel.africa` in production 
 
+## Products
 ### Collection 
 Initiate a collection request to the user's phone number with the following:
 
