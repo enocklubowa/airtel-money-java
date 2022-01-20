@@ -196,9 +196,10 @@ Remittance remittance;
 remittance.checkEligibility(500, "75*******");
 ```
 
+### Conclusion
 If you wish to use the package, download it and compile it locally into a jar with the following command:
 ```
 mvn install
 ```
-The jar will be created under `/target`You can then import the created jar into your project.
+The jar will be created under `/target`, You can then import the created jar into your project.
 I will upload it to maven central when it's tested well.
