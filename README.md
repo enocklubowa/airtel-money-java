@@ -23,7 +23,7 @@ Collection collection;
 
 CollectionResponse response;
 
-response = collection.initiate("Testing transaction", "75*******", 1000, "YOUR_INTERNAL_GENERATED_TRANSACTION_ID");
+response = collection.initiate("Testing transaction", "75*******", 1000.0, "YOUR_INTERNAL_GENERATED_TRANSACTION_ID");
 ```
 
 Handle Exception:
