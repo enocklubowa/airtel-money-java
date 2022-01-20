@@ -30,7 +30,7 @@ Handle Exception:
 ```java
 try{
     response = collection.initiate("Testing transaction", "75*******", 1000, "YOUR_INTERNAL_GENERATED_TRANSACTION_ID");
-} catch(CollationException exception){
+} catch(CollectionException exception){
     //Print or log the error
     System.out.println(exception.getMessage());
 }
