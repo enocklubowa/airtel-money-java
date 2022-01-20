@@ -96,7 +96,7 @@ try{
 }
 ```
 
-The response has the same data as from initiating a collection exception the transaction id which is returned as:
+The response has the same data as from initiating a collection except the transaction id which is returned as:
 
 ```java
 response.getData().getTransaction().getAirtel_money_id();
