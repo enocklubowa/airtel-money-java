@@ -26,6 +26,14 @@ Add required dependencies
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-starter-validation</artifactId>
 </dependency>
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-webflux</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-cache</artifactId>
+</dependency>
 ```
 Scan for components in the package from your main class
 
