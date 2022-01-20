@@ -2,7 +2,7 @@ package com.enocklubowa.airtelmoneyjava.model;
 
 import java.util.List;
 
-public class ProductConstants {
+public class CollectionErrorCodes {
 
     public static List<String> getErrors(){
         return List.of(
@@ -29,9 +29,6 @@ public class ProductConstants {
                 "ROUTER116",
                 "ROUTER117");
     }
-
-    public static List<String> getAvailableTransactionStatus(){
-        return List.of("TS", "TA", "TIP");
-    }
+    
 
 }

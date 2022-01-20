@@ -13,7 +13,7 @@ public class CollectionImpl implements Collection {
 
     private final AirtelWebClient webClient;
 
-    private final AirtelErrorsHandler airtelErrorsHandler;
+    private final ErrorCodeHandler errorCodeHandler;
 
     @Override
     public CollectionResponse initiate(
@@ -38,7 +38,7 @@ public class CollectionImpl implements Collection {
                 .bodyToMono(CollectionResponse.class)
                 .block();
 
-        airtelErrorsHandler.checkForAirtelInternalErrors(response);
+        errorCodeHandler.checkForErrorResultCodes(response);
 
         return response;
     }
@@ -58,7 +58,7 @@ public class CollectionImpl implements Collection {
                 .bodyToMono(CollectionResponse.class)
                 .block();
 
-        airtelErrorsHandler.checkForAirtelInternalErrors(response);
+        errorCodeHandler.checkForErrorResultCodes(response);
 
         return response;
     }
@@ -73,7 +73,7 @@ public class CollectionImpl implements Collection {
                 .bodyToMono(CollectionResponse.class)
                 .block();
 
-        airtelErrorsHandler.checkForAirtelInternalErrors(response);
+        errorCodeHandler.checkForErrorResultCodes(response);
 
         return response;
     }
