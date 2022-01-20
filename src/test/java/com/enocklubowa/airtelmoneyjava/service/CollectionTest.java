@@ -1,6 +1,6 @@
 package com.enocklubowa.airtelmoneyjava.service;
 
-import com.enocklubowa.airtelmoneyjava.exception.CollectionException;
+import com.enocklubowa.airtelmoneyjava.exception.AirtelException;
 import com.enocklubowa.airtelmoneyjava.service.product.Collection;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,7 @@ public class CollectionTest {
         try {
             collection.initiate("testing", "753503195", 50L, "99682c47-8beb-470e");
         }
-        catch (CollectionException exception){
+        catch (AirtelException exception){
             System.out.println(exception.getMessage());
         }
 

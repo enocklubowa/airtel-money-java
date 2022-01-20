@@ -3,6 +3,7 @@ package com.enocklubowa.airtelmoneyjava.service;
 import com.enocklubowa.airtelmoneyjava.configuration.Properties;
 import com.enocklubowa.airtelmoneyjava.model.RemittanceRequest;
 import com.enocklubowa.airtelmoneyjava.model.RemittanceResponse;
+import com.enocklubowa.airtelmoneyjava.service.product.Remittance;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;

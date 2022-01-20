@@ -1,6 +1,7 @@
 package com.enocklubowa.airtelmoneyjava.service.product;
 
 import com.enocklubowa.airtelmoneyjava.model.AirtelResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -19,3 +20,4 @@ public interface Disbursement {
 
     AirtelResponse checkStatus(String id);
 }
+

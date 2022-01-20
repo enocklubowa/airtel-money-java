@@ -1,6 +1,6 @@
 package com.enocklubowa.airtelmoneyjava.service;
 
-import com.enocklubowa.airtelmoneyjava.exception.CollectionException;
+import com.enocklubowa.airtelmoneyjava.exception.AirtelException;
 import com.enocklubowa.airtelmoneyjava.model.AirtelErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.reactive.function.client.ClientResponse;
@@ -15,7 +15,7 @@ public class ResponseHandler {
             case BAD_REQUEST:
                 //Your request is invalid.
                 return response.bodyToMono(AirtelErrorResponse.class)
-                        .flatMap(body -> Mono.error(new CollectionException(body.getError()+": "+body.getError_description())));
+                        .flatMap(body -> Mono.error(new AirtelException(body.getError()+": "+body.getError_description())));
 
             case UNAUTHORIZED:
                 message = "Your API key or bearer token is wrong.";
@@ -51,7 +51,7 @@ public class ResponseHandler {
 
     private static Mono<ClientResponse> throwExceptionWithMessage(ClientResponse response, String message){
         return response.bodyToMono(String.class)
-                .flatMap(body -> Mono.error(new CollectionException(message)));
+                .flatMap(body -> Mono.error(new AirtelException(message)));
     }
 
 }

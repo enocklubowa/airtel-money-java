@@ -76,14 +76,14 @@ Collection collection;
 
 CollectionResponse response;
 
-response = collection.initiate("Testing transaction", "75*******", 1000.0, "YOUR_INTERNAL_GENERATED_TRANSACTION_ID");
+response = collection.initiate("notes", "75*******", 1000.0, "YOUR_INTERNAL_GENERATED_TRANSACTION_ID");
 ```
 
 Handle Exception:
 ```java
 try{
-    response = collection.initiate("Testing transaction", "75*******", 1000, "YOUR_INTERNAL_GENERATED_TRANSACTION_ID");
-} catch(CollectionException exception){
+    response = collection.initiate("notes", "75*******", 1000, "YOUR_INTERNAL_GENERATED_TRANSACTION_ID");
+} catch(AirtelException exception){
     //Print or log the error
     System.out.println(exception.getMessage());
 }
@@ -113,15 +113,6 @@ CollectionResponse response;
 response = collection.refund("transaction_id");
 ```
 
-Handle Exception:
-```java
-try{
-    response = refund.make("transaction_id");
-}catch(CollectionException exception){
-    System.out.println(exception.getMessage())
-}
-```
-
 The response has the same data as from initiating a collection except the transaction id which is returned as:
 
 ```java
@@ -135,20 +126,79 @@ CollectionResponse response;
 response = collection.checkStatus("transaction_id");
 ```
 
-Handle Exception:
-```java
-try{
-    response = transactionInquiry.make("transaction_id");
-}catch (CollectionException exception){
-    System.out.println(exception.getMessage());
-}
-```
-
 Get status of the transaction from the response:
 ```java
 response.getData().getTransaction().getStatus();
 ```
 
-More Products in the API will be added soon.
-For now, if you wish to use it, download it and compile it locally into a jar that you can import.
-Otherwise, a package is coming soon after setting up and passing tests.
+### Disbursement
+
+Initiate a disbursement:
+
+```java
+@Autowired
+Disbursement disbursement;
+
+disbursement.initiate("notes", "75******", "PIN", 500, "transaction_id");
+```
+
+Check status of disbursement
+
+```java
+disbursement.checkStatus("transaction_id")
+```
+
+### Cash In
+
+Initiate a cash in:
+
+```java
+@Autowired
+CashIn cashIn;
+
+HashMap<String, String> additional_info = new HashMap<>();
+additional_info.put("remark", "Airtime");
+
+cashIn.initiate("75******", 50, additional_info, "notes", "PIN", "transaction_id");
+```
+
+Check status of cash in:
+```java
+cashIn.checkStatus("transaction_id")
+```
+
+### Cash Out
+Initiate a cash out:
+
+```java
+@Autowired
+CashOut cashOut;
+
+HashMap<String, String> additional_info = new HashMap<>();
+additional_info.put("remark", "Airtime");
+
+cashOut.initiate("75******", 50, additional_info, "notes", "transaction_id");
+```
+
+Check status of cash in:
+```java
+cashOut.checkStatus("transaction_id")
+```
+
+### Remittance
+Check eligibility of a user to receive money:
+
+**Note:** the amount required by the method won't be deducted, but it's required by the Airtel API to complete the request
+```java
+@Autowired
+Remittance remittance;
+
+remittance.checkEligibility(500, "75*******");
+```
+
+If you wish to use the package, download it and compile it locally into a jar with the following command:
+```
+mvn install
+```
+The jar will be created under `/target`You can then import the created jar into your project.
+I will upload it to maven central when it's tested well.
