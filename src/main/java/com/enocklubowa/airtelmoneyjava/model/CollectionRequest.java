@@ -7,11 +7,12 @@ import lombok.*;
  */
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class CollectionRequest extends TransferRequest {
     private Subscriber subscriber;
 
-    public CollectionRequest(String reference, Subscriber subscriber, Transaction transaction){
+    public CollectionRequest(Subscriber subscriber, String reference, Transaction transaction){
         super(reference, transaction);
         this.subscriber = subscriber;
     }

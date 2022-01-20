@@ -38,8 +38,8 @@ public class DisbursementImpl implements Disbursement {
         Payee payee = new Payee(msisdn);
 
 
-        TransferRequest request = new DisbursementRequest(
-                reference, transaction, payee, pinEncoder.encode(pin));
+        DisbursementRequest request = new DisbursementRequest(payee, pinEncoder.encode(pin),
+                reference, transaction);
 
         AirtelResponse response = webClient.build()
                 .post()

@@ -29,7 +29,7 @@ public class CollectionImpl implements Collection {
         transaction.setId(transactionId);
         transaction.setAmount(amount);
 
-        TransferRequest request = new CollectionRequest(reference, subscriber, transaction);
+        TransferRequest request = new CollectionRequest(subscriber, reference, transaction);
 
         AirtelResponse response = webClient.build()
                 .post()
@@ -40,7 +40,6 @@ public class CollectionImpl implements Collection {
                 .block();
 
         errorCodeHandler.checkForErrorResultCodes(response);
-
         return response;
     }
 
@@ -54,7 +53,7 @@ public class CollectionImpl implements Collection {
         AirtelResponse response = webClient.build()
                 .post()
                 .uri("/standard/v1/payments/refund")
-                .body(Mono.just(request), CollectionRequest.class)
+                .body(Mono.just(request), RefundRequest.class)
                 .retrieve()
                 .bodyToMono(AirtelResponse.class)
                 .block();
