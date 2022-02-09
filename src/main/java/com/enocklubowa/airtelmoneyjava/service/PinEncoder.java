@@ -20,6 +20,16 @@ public class PinEncoder {
     protected static String DEFAULT_ENCRYPTION_ALGORITHM = "RSA";
     protected static String DEFAULT_TRANSFORMATION = "RSA/ECB/PKCS1Padding";
 
+    /**
+     * Encodes pin required for transactions
+     * @param pin to be encoded before transmission to the Airtel server
+     * @return
+     * @throws IllegalBlockSizeException
+     * @throws NoSuchPaddingException
+     * @throws BadPaddingException
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeyException
+     */
     public static String encode(String pin) throws IllegalBlockSizeException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, InvalidKeyException {
         String encryptData = encrypt(pin, Properties.airtel_public_key);
         System.out.println("Encrypted String-" + encryptData);
@@ -27,6 +37,17 @@ public class PinEncoder {
     }
 
 
+    /**
+     * Actual encryption of data with a base64 representation of the public key
+     * @param data
+     * @param publicKey
+     * @return
+     * @throws BadPaddingException
+     * @throws IllegalBlockSizeException
+     * @throws InvalidKeyException
+     * @throws NoSuchPaddingException
+     * @throws NoSuchAlgorithmException
+     */
     private static String encrypt(String data, String publicKey) throws BadPaddingException, IllegalBlockSizeException,
             InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException {
         Cipher cipher = Cipher.getInstance(DEFAULT_TRANSFORMATION);
@@ -34,6 +55,11 @@ public class PinEncoder {
         return Base64.getEncoder().encodeToString(cipher.doFinal(data.getBytes()));
     }
 
+    /**
+     * Converts base64 string representation of the public key to native PublicKey usable by the cipher
+     * @param base64PublicKey
+     * @return
+     */
     private static PublicKey getPublicKey(String base64PublicKey) {
         PublicKey publicKey = null;
         try {
